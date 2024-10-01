@@ -5,6 +5,7 @@ import React from "react";
 import { Inter } from 'next/font/google'
 import { ToastContainer } from 'react-toastify';
 
+import { YaMetrika } from './ya-metrika';
 import { Providers } from '@/providers';
 import { fetchData } from "@/server_actions";
 import { ContactUsPopup, Footer, Header } from '@/widgets';
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 			<meta name="keywords" content={metadata.keywords}/>
 			<title>{metadata.title}</title>
 			<link rel="icon" href="/img/favicon.png" type="image/png"/>
+			<YaMetrika/>
 		</head>
 		<body className="flex flex-col bg-gray-100">
 		<Providers>
