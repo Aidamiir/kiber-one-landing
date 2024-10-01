@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --landing-primary-color: #e8c639;
+    --landing-primary-hover-color: #d8b63b;
+    --landing-primary-active-color: #b39421;
+    --landing-secondary-color: #05b9be;
+}
+
+html, body {
+    height: 100%;
+}
+
+html.lock {
+    overflow: hidden;
+}
