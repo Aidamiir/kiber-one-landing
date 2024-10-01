@@ -7,7 +7,7 @@ export const Footer = () => {
 			<div className="container text-white flex items-center justify-between max-[450px]:flex-col-reverse gap-4">
 				<div className="flex flex-col gap-4 max-[450px]:items-center">
 					<Image
-						className="w-full max-w-[168] max-md:max-w-[130]"
+						className="w-full max-w-[168px] max-md:max-w-[130px]"
 						width={168}
 						height={86}
 						src="/img/logo.avif"

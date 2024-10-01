@@ -265,7 +265,7 @@ export default async function Home() {
 			</Section>
 
 			<SectionWithMarkList
-				title="5 причин освоитьцифровые технологии"
+				title="5 причин освоить цифровые технологии"
 				src="/img/ilon-mask.png"
 				alt="Илон Маск"
 				width={400}
