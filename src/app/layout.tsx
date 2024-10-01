@@ -1,11 +1,12 @@
 import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 
-import React from "react";
+import React, { Suspense } from "react";
+import Script from 'next/script';
 import { Inter } from 'next/font/google'
 import { ToastContainer } from 'react-toastify';
 
-import { YaMetrika } from './ya-metrika';
+import YandexMetrika from '@/app/yandex-metrika';
 import { Providers } from '@/providers';
 import { fetchData } from "@/server_actions";
 import { ContactUsPopup, Footer, Header } from '@/widgets';
@@ -22,7 +23,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 			<meta name="keywords" content={metadata.keywords}/>
 			<title>{metadata.title}</title>
 			<link rel="icon" href="/img/favicon.png" type="image/png"/>
-			<YaMetrika/>
 		</head>
 		<body className="flex flex-col bg-gray-100">
 		<Providers>
@@ -34,6 +34,28 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 			</main>
 			<Footer/>
 		</Providers>
+
+
+		<Script id="metrika-counter" strategy="afterInteractive">
+			{`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+              m[i].l=1*new Date();
+              for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+              (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+              ym(98511220, "init", {
+                    defer: true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+              });`
+			}
+		</Script>
+
+		<Suspense fallback={<></>}>
+			<YandexMetrika/>
+		</Suspense>
 		</body>
 		</html>
 	);
