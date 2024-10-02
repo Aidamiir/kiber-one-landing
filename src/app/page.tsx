@@ -3,8 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { fetchData } from '@/server_actions';
-import { CommentCard, SectionWithMarkList } from '@/widgets';
-import { AdvantagesItem, ContactUsButton, InfoCard, ModuleItem, Section, Text, Title, Video } from '@/shared/ui';
+import { SectionWithMarkList } from '@/widgets';
+import { ContactUsButton, Section, Text, Title, Video } from '@/shared/ui';
+import YandexMap from '@/app/yandex-map';
 
 export default async function Home() {
 	const {
@@ -25,7 +26,7 @@ export default async function Home() {
 					<div className="flex flex-col items-start gap-8">
 						<Title className="max-w-[650px]" level={1} size="5xl">
 							<span className="text-secondary">Создайте успешное будущее своему ребёнку {' '}</span>
-							<span>вместе с IT-навыками от KIBERone!</span>
+							<span>вместе с IT-навыками от KIBERone в городе Армавир и Курганинск!</span>
 						</Title>
 						<Text>
 							Мы знаем, чему учить детей, чтобы это было актуально через 15 лет!
@@ -46,14 +47,24 @@ export default async function Home() {
 			<Section>
 				<div className="container">
 					<ul className="lg:flex lg:items-center lg:justify-between max-lg:grid max-lg:grid-cols-2 max-lg:gap-y-8 max-md:grid-cols-1">
-						{infoCards.map(({ src, alt, firstText, secondText }) => (
+						{infoCards.map(({ src, alt, firstText, secondText }, i) => (
 							<li key={src}>
-								<InfoCard
-									src={src}
-									alt={alt}
-									firstText={firstText}
-									secondText={secondText}
-								/>
+								<div className="gap-4 flex flex-col items-center">
+									<div className="w-[60px] aspect-square">
+										<Image
+											className="w-full h-full object-contain"
+											width={60}
+											height={60}
+											src={src}
+											alt={alt}
+										/>
+									</div>
+									<div
+										className={`flex items-center text-[22px] ${i >= 2 ? 'flex-col-reverse' : 'flex-col'}`}>
+										<div className="font-bold">{firstText}</div>
+										<div>{secondText}</div>
+									</div>
+								</div>
 							</li>
 						))}
 					</ul>
@@ -105,7 +116,8 @@ export default async function Home() {
 					<ul className="flex items-center justify-center gap-14 max-md:grid max-md:grid-cols-2 text-center">
 						{schoolStats.map(({ title, smallTitle, text }) => (
 							<li key={title} className="font-bold">
-								<div className="text-6xl max-lg:text-5xl max-md:text-4xl">{title} <span className="text-3xl">{smallTitle}</span>
+								<div className="text-6xl max-lg:text-5xl max-md:text-4xl">{title} <span
+									className="text-3xl">{smallTitle}</span>
 								</div>
 								<div className="text-3xl max-lg:text-2xl max-md:text-xl">{text}</div>
 							</li>
@@ -124,7 +136,18 @@ export default async function Home() {
 					<ul className="grid grid-cols-4 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-[450px]:grid-cols-1">
 						{advantages.map(({ src, alt, text }) => (
 							<li key={src}>
-								<AdvantagesItem src={src} alt={alt}>{text}</AdvantagesItem>
+								<div
+									className="flex flex-col items-center h-full py-6 px-4 bg-white rounded-3xl shadow-xl">
+									<div className="w-[60px] h-[60px] mb-2 flex items-center justify-center">
+										<Image
+											width={50}
+											height={50}
+											src={src}
+											alt={alt}
+										/>
+									</div>
+									<p className="text-center text-md max-md:text-[14px]">{text}</p>
+								</div>
 							</li>
 						))}
 					</ul>
@@ -166,7 +189,21 @@ export default async function Home() {
 					<ul className="grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-md:grid-cols-1">
 						{modules.map(({ src, alt, text }) => (
 							<li key={src}>
-								<ModuleItem src={src} alt={alt}>{text}</ModuleItem>
+								<div className="p-6 h-full flex flex-col gap-8 rounded-3xl bg-white shadow-xl">
+									<Title level={3} className="text-xl h-12 max-lg:text-[16px] max-lg:leading-normal">
+										{text}
+									</Title>
+									<div className="w-full h-[162px] overflow-hidden rounded-2xl">
+										<Image
+											className="object-cover w-full"
+											width={306}
+											height={162}
+											src={src}
+											alt={alt}
+										/>
+									</div>
+									<ContactUsButton>Оставить заявку</ContactUsButton>
+								</div>
 							</li>
 						))}
 					</ul>
@@ -243,7 +280,7 @@ export default async function Home() {
 							Почему KIBERone?
 						</Title>
 
-						<ul>
+						<ul className="pl-4">
 							<li className="list-disc">
 								KIBERone признан ЮНЕСКО лучшим проектом в мире в сфере цифровых технологий для детей
 							</li>
@@ -322,13 +359,42 @@ export default async function Home() {
 						Что говорят родители о KIBERone
 					</Title>
 
-					<ul className="flex gap-8 max-lg:flex-col">
-						{comments.map((i, index) => (
+					<ul className="gap-8 grid grid-cols-3 max-lg:grid-cols-1">
+						{comments.map(({ src, alt, text, whoIt, name }, index) => (
 							<li key={index}>
-								<CommentCard {...i}/>
+								<div className="bg-white p-8 rounded-2xl flex flex-col gap-4 h-full">
+									<div className="flex items-center gap-4">
+										<Image
+											className="rounded-full"
+											width={60}
+											height={60}
+											src={src}
+											alt={alt}
+										/>
+										<div>
+											<div className="font-bold">{name}</div>
+											<div className="text-gray-600 text-[14px] leading-normal">{whoIt}</div>
+										</div>
+									</div>
+									<Text className="text-sm leading-normal">{text}</Text>
+								</div>
 							</li>
 						))}
 					</ul>
+				</div>
+			</Section>
+
+			<Section>
+				<div className="container flex flex-col items-center gap-8">
+					<Title className="text-center">
+						Локации KIBERone в Армавире и Курганинске
+					</Title>
+
+					<div className="p-8 bg-white rounded-2xl shadow-md w-full max-md:p-4">
+						<div className="rounded-2xl overflow-hidden w-full">
+							<YandexMap/>
+						</div>
+					</div>
 				</div>
 			</Section>
 
@@ -353,43 +419,49 @@ export default async function Home() {
 			</Section>
 
 			<Section>
-				<div className="container">
+				<div className="container flex flex-col gap-8">
 					<Title className="text-center">Партнеры KIBERone</Title>
-					<div className="flex items-center justify-between gap-2 max-md:grid-cols-3 max-md:grid max-[500px]:grid-cols-2">
-						<div className="p-10">
+					<div
+						className="flex items-center justify-between gap-2 max-md:grid-cols-3 max-md:grid max-[500px]:grid-cols-1">
+						<div className="p-10 flex max-[500px]:justify-center">
 							<Image
+								className="max-[500px]:max-w-[120px]"
 								width={230}
 								height={105}
 								src="/img/partners/1.avif"
 								alt="Сколово"
 							/>
 						</div>
-						<div className="p-10">
+						<div className="p-10 flex max-[500px]:justify-center">
 							<Image
+								className="max-[500px]:max-w-[120px]"
 								width={230}
 								height={105}
 								src="/img/partners/2.avif"
 								alt="Майкрософт"
 							/>
 						</div>
-						<div className="p-10">
+						<div className="p-10 flex max-[500px]:justify-center">
 							<Image
+								className="max-[500px]:max-w-[120px]"
 								width={230}
 								height={105}
 								src="/img/partners/3.avif"
 								alt="Самсунг"
 							/>
 						</div>
-						<div className="p-10">
+						<div className="p-10 flex max-[500px]:justify-center">
 							<Image
+								className="max-[500px]:max-w-[120px]"
 								width={230}
 								height={105}
 								src="/img/partners/4.avif"
 								alt="Сбербанк"
 							/>
 						</div>
-						<div className="p-10">
+						<div className="p-10 flex max-[500px]:justify-center">
 							<Image
+								className="max-[500px]:max-w-[120px]"
 								width={230}
 								height={105}
 								src="/img/partners/5.avif"

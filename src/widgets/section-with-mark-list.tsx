@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ListItemWithMark, Section, Title } from '@/shared/ui';
+import { Section, Text, Title } from '@/shared/ui';
 
 type Props = {
 	title: string;
@@ -21,7 +21,19 @@ export const SectionWithMarkList = ({ title, src, alt, width, height, data }: Pr
 					<ul className="flex flex-col gap-4">
 						{data.map((i) => (
 							<li key={i}>
-								<ListItemWithMark>{i}</ListItemWithMark>
+								<div className="flex items-center gap-4">
+									<div className="p-3 flex items-center bg-primary rounded-full">
+										<Image
+											className="m-auto"
+											width={18}
+											height={18}
+											src="/img/icons/check-mark.svg"
+											alt="Галочка"
+										/>
+									</div>
+
+									<Text>{i}</Text>
+								</div>
 							</li>
 						))}
 					</ul>
