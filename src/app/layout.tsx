@@ -1,12 +1,11 @@
 import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 
-import React, { Suspense } from "react";
+import React from "react";
 import Script from 'next/script';
 import { Inter } from 'next/font/google'
 import { ToastContainer } from 'react-toastify';
 
-import YandexMetrika from '@/app/yandex-metrika';
 import { Providers } from '@/providers';
 import { fetchData } from "@/server_actions";
 import { ContactUsPopup, Footer, Header } from '@/widgets';
@@ -35,7 +34,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 			<Footer/>
 		</Providers>
 
-
 		<Script id="metrika-counter" strategy="afterInteractive">
 			{`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
               m[i].l=1*new Date();
@@ -52,10 +50,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               });`
 			}
 		</Script>
-
-		<Suspense fallback={<></>}>
-			<YandexMetrika/>
-		</Suspense>
 		</body>
 		</html>
 	);

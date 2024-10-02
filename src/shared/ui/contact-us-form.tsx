@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { toast } from 'react-toastify';
+import { ym } from 'next-yandex-metrica';
 
 import { Button } from '@/shared/ui/button';
 import { PopupContext } from '@/providers';
@@ -40,6 +41,7 @@ export const ContactUsForm = ({ className }: { className?: string }) => {
 					type: 'success',
 					autoClose: 3000,
 				});
+				ym(98511220, 'reachGoal', 'form');
 			}
 			else {
 				toast.update(toastId, {
