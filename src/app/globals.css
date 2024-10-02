@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-    --landing-primary-color: #e8c639;
-    --landing-primary-hover-color: #d8b63b;
-    --landing-primary-active-color: #b39421;
-    --landing-secondary-color: #05b9be;
+    --ko-landing-primary-color: #e8c639;
+    --ko-landing-primary-hover-color: #d8b63b;
+    --ko-landing-primary-active-color: #b39421;
+    --ko-landing-secondary-color: #05b9be;
 }
 
 html, body {
@@ -15,4 +15,9 @@ html, body {
 
 html.lock {
     overflow: hidden;
+    padding-right: var(--ko-landing-scrollbar-width, 17px);
+}
+
+.popup-offset {
+    padding-right: var(--ko-landing-scrollbar-width, 17px);
 }

@@ -211,9 +211,8 @@ export default async function Home() {
 			</Section>
 
 			<Section>
-				<div className="container flex justify-between items-center gap-16 max-md:flex-col-reverse">
+				<div className="container grid grid-cols-2 max-md:flex justify-between items-center gap-16 max-md:flex-col-reverse">
 					<Image
-						className="max-w-[525] w-full"
 						width={525}
 						height={421}
 						src="/img/mastering-it.png"

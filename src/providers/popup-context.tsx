@@ -25,7 +25,9 @@ export const PopupProvider = ({ children }: { children: ReactNode }) => {
 	const closePopup = (e: MouseEvent | null, hard?: boolean) => {
 		if (hard) {
 			setIsOpen(false);
-			document.documentElement.classList.remove("lock");
+			setTimeout(() => {
+				document.documentElement.classList.remove("lock");
+			}, 200);
 		}
 
 		if (e) {
@@ -33,7 +35,9 @@ export const PopupProvider = ({ children }: { children: ReactNode }) => {
 
 			if (target.hasAttribute('data-close-popup')) {
 				setIsOpen(false);
-				document.documentElement.classList.remove("lock");
+				setTimeout(() => {
+					document.documentElement.classList.remove("lock");
+				}, 200);
 			}
 		}
 	};

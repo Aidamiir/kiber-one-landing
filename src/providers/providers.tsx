@@ -1,8 +1,10 @@
 import { type ReactNode } from 'react';
-import { PopupProvider } from '@/providers';
+import { PopupProvider, ScrollbarProvider } from '@/providers';
 
 export const Providers = ({ children }: { children: ReactNode }) => (
 	<PopupProvider>
-		{children}
+		<ScrollbarProvider>
+			{children}
+		</ScrollbarProvider>
 	</PopupProvider>
 );

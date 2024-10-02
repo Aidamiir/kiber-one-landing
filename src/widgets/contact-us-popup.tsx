@@ -10,7 +10,7 @@ export const ContactUsPopup = () => {
 
 	return (
 		<div
-			className={`px-4 fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex transition-all ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+			className={`popup-offset fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex transition-all ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
 			onClick={closePopup}
 			data-close-popup
 		>

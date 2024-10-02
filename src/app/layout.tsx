@@ -23,7 +23,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 			<title>{metadata.title}</title>
 			<link rel="icon" href="/img/favicon.png" type="image/png"/>
 		</head>
-		<body className="flex flex-col bg-gray-100">
+		<body className="relative flex flex-col bg-gray-100">
 		<Providers>
 			<Header/>
 			<main className="flex-auto">

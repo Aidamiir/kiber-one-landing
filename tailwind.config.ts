@@ -9,10 +9,10 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
-				primary: "var(--landing-primary-color)",
-				primaryHover: "var(--landing-primary-hover-color)",
-				primaryActive: "var(--landing-primary-active-color)",
-				secondary: "var(--landing-secondary-color)",
+				primary: "var(--ko-landing-primary-color)",
+				primaryHover: "var(--ko-landing-primary-hover-color)",
+				primaryActive: "var(--ko-landing-primary-active-color)",
+				secondary: "var(--ko-landing-secondary-color)",
 			},
 		},
 		container: {
