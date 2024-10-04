@@ -42,7 +42,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
  
               ym(98511220, "init", {
-                    defer: true,
                     clickmap:true,
                     trackLinks:true,
                     accurateTrackBounce:true,
