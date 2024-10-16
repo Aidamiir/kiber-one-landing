@@ -33,7 +33,7 @@ export default async function Home() {
 							Приглашаем детей с 6 до 14 лет
 						</Text>
 						<ContactUsButton>
-							Оставить заявку на пробное занятие
+							Получить первое занятие бесплатно
 						</ContactUsButton>
 					</div>
 					<Image

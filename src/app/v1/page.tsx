@@ -32,7 +32,7 @@ export default async function Home() {
 							Мы знаем, чему учить детей, чтобы это было актуально через 15 лет!
 						</Text>
 						<ContactUsButton>
-							Оставить заявку на пробное занятие
+							Получить первое занятие бесплатно
 						</ContactUsButton>
 					</div>
 					<Image
